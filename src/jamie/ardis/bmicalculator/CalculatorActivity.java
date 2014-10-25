@@ -1,7 +1,7 @@
 package jamie.ardis.bmicalculator;
 
 import jamie.ardis.utils.Bmi;
-import jamie.ardis.utils.Measure;
+import jamie.ardis.utils.Measurement;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,7 +16,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	EditText weight;
 	EditText height;
 	TextView result;
-	private Measure system = Measure.Metric;
+	private Measurement measurement = Measurement.Metric;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +51,8 @@ public class CalculatorActivity extends ActionBarActivity {
 		double w = Double.parseDouble(weight.getText().toString());
 		double h = Double.parseDouble(height.getText().toString());
 		Bmi bmi = new Bmi(w,h);
-		double r = bmi.getBmi(system);
-		result.setText(Double.toString(r));
+		double r = bmi.getBmi(measurement);
+		result.setText(bmi.getSeverity(measurement));
 	}
 	public void onRadioButtonClicked(View view) {
 	    // Is the button now checked?
@@ -62,11 +62,11 @@ public class CalculatorActivity extends ActionBarActivity {
 	    switch(view.getId()) {
 	        case R.id.rbMetric:
 	            if (checked)
-	                system = Measure.Metric;
+	                measurement = Measurement.Metric;
 	            break;
 	        case R.id.rbImperial:
 	            if (checked)
-	            	system = Measure.Imperial;
+	            	measurement = Measurement.Imperial;
 	            break;
 	    }
 	}

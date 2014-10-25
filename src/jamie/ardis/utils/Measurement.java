@@ -1,6 +1,6 @@
 package jamie.ardis.utils;
 
-public enum Measure {
+public enum Measurement {
 
 	Imperial,
 	Metric
