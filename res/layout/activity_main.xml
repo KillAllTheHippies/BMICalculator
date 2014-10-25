@@ -24,14 +24,18 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        android:text="@string/calculate_button" />
+        android:text="@string/calculate_button"
+        android:onClick="launchCalculator"
+         />
         
         <Button
         android:id="@+id/btnSettings"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        android:text="@string/settings" />
+        android:text="@string/settings" 
+        android:onClick="launchSettings"
+        />
         
     </LinearLayout>
 
