@@ -14,10 +14,10 @@
     	tools:context="jamie.ardis.bmicalculator.MainActivity" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tvUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
+            />
         
         <Button
         android:id="@+id/btnCalculate"

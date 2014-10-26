@@ -5,6 +5,7 @@ import jamie.ardis.utils.User;
 import jamie.ardis.utils.UserList;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -39,6 +40,11 @@ public class UserClickListener implements OnItemClickListener {
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
         //Tell the Activity that owns this Listener to finish
         //i.e. close the SettingsActivity, and return to MainActivity
+        
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("name", user.getName());
+        owner.setResult(Activity.RESULT_OK, returnIntent);
+
         owner.finish();
 
     }
