@@ -1,6 +1,5 @@
 package jamie.ardis.bmicalculator;
 
-import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.SettingsAdaptor;
 import jamie.ardis.utils.User;
 import jamie.ardis.utils.UserList;
@@ -9,14 +8,10 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.AdapterView;
 
 public class SettingsActivity extends ActionBarActivity {
 
@@ -45,7 +40,7 @@ public class SettingsActivity extends ActionBarActivity {
 		listView.setAdapter(adapter);
 
 		//add a click listener
-		listener=new UserClickListener();
+		listener=new UserClickListener(this);
 		listView.setOnItemClickListener(listener);
 		
 	}

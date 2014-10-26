@@ -3,6 +3,7 @@ package jamie.ardis.bmicalculator;
 import jamie.ardis.utils.SettingsAdaptor;
 import jamie.ardis.utils.User;
 import jamie.ardis.utils.UserList;
+import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,8 +16,14 @@ public class UserClickListener implements OnItemClickListener {
 
 	SettingsAdaptor settings;
 	UserList users=new UserList();
+	Activity owner;
 	
-    @Override
+	
+    public UserClickListener(Activity owner) {
+		this.owner = owner;
+	}
+
+	@Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         Context context = view.getContext();
@@ -28,9 +35,11 @@ public class UserClickListener implements OnItemClickListener {
         settings = new SettingsAdaptor(context);
         settings.setUser(user.getName());
 
-        //TODO return to Main
         String s = String.format("User %s,  Measure %s", user.getName(), user.getMeasurement());
         Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+        //Tell the Activity that owns this Listener to finish
+        //i.e. close the SettingsActivity, and return to MainActivity
+        owner.finish();
 
     }
 
