@@ -11,13 +11,19 @@
     tools:context="jamie.ardis.bmicalculator.CalculatorActivity" >
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calculate" />
-    
-    <!--  com.jamie.ardis.item_user
-  		android:id="@+id/ucUser"
-   /-->
+        android:text="@string/calculate" 
+        android:textAlignment="center"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/tvUser_Calc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:padding="10sp"
+        android:textSize="10sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +39,7 @@
                 android:id="@+id/tvHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="5"
                 android:text="@string/height" />
 
             <EditText
@@ -41,6 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:layout_below="@+id/tvHeight"
                 android:inputType="numberDecimal" >
 
                 <requestFocus />
@@ -53,16 +60,18 @@
             android:layout_weight="2" >
 
             <TextView
+                android:id="@+id/tvWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                 android:id="@+id/tvWeight"
-                 android:text="@string/weight" />
+                android:ems="5"
+
+                android:text="@string/weight" />
 
             <EditText
                 android:id="@+id/edWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tvWeight"
                 android:ems="10"
                 android:inputType="numberDecimal" >
             </EditText>
@@ -73,8 +82,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/calculate" 
             android:onClick="calculate"
+            android:text="@string/calculate" 
             />
     </LinearLayout>
 
@@ -96,16 +105,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/metric" 
             android:onClick="onRadioButtonClicked"
-            />
+            android:text="@string/metric" />
 
         <RadioButton
             android:id="@+id/rbImperial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/imperial"
-            android:onClick="onRadioButtonClicked" />
+            android:onClick="onRadioButtonClicked"
+            android:text="@string/imperial" />
     </RadioGroup>
 
 </LinearLayout>

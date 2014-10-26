@@ -1,5 +1,7 @@
 package jamie.ardis.bmicalculator;
 
+import java.text.DecimalFormat;
+
 import jamie.ardis.utils.Bmi;
 import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.User;
@@ -34,8 +36,7 @@ public class CalculatorActivity extends ActionBarActivity {
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 		    String name = extras.getString("name");
-		    user = userList.getUser(name);
-		    //TODO new text view to display the user
+		    displayUser(name);
 		    
 		}
 		
@@ -60,6 +61,21 @@ public class CalculatorActivity extends ActionBarActivity {
 			tv =  (TextView)findViewById(R.id.tvHeight);
 			tv.setText(String.format(getString(R.string.height), "Inches"));
 		}
+	}
+	
+	private void displayUser(String name) {
+		UserList list = new UserList();
+		user = list.getUser(name);
+		String text = String.format("Name: %s\nMeasurement System: %s", user.getName(), user.getMeasurement());
+		TextView tvUser = (TextView) findViewById(R.id.tvUser_Calc);
+		tvUser.setText(text);
+	}
+	
+	private void displayUser() {
+
+		String text = String.format("Name: %s\nMeasurement System: %s", user.getName(), user.getMeasurement());
+		TextView tvUser = (TextView) findViewById(R.id.tvUser_Calc);
+		tvUser.setText(text);
 	}
 
 	@Override
@@ -86,7 +102,10 @@ public class CalculatorActivity extends ActionBarActivity {
 		double h = Double.parseDouble(height.getText().toString());
 		Bmi bmi = new Bmi(w,h);
 		double r = bmi.getBmi(measurement);
-		result.setText(bmi.getSeverity(measurement));
+		DecimalFormat df = new DecimalFormat("0.0");
+		String b = df.format(r);
+		String s = String.format("BMI: %s Severity: %s", b, bmi.getSeverity(measurement));
+		result.setText(s);
 	}
 	public void onRadioButtonClicked(View view) {
 	    // Is the button now checked?
@@ -103,7 +122,9 @@ public class CalculatorActivity extends ActionBarActivity {
 	            	measurement = Measurement.Imperial;
 	            break;
 	    }
-	    
-		updateLabels();
+	    user.setMeasurement(measurement);//todo, persist the value, see UserList
+	    displayUser();
+	    updateLabels();
+		
 	}
 }
