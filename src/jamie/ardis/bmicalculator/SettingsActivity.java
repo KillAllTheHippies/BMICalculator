@@ -6,6 +6,8 @@ import jamie.ardis.utils.UserList;
 
 import java.util.ArrayList;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -22,28 +24,28 @@ public class SettingsActivity extends ActionBarActivity {
 
 	ArrayAdapter<User> adapter;
 	android.widget.AdapterView.OnItemClickListener listener;
-    
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-		
+
 		UserList list = new UserList();
 		users = list.getUsers();
-	
-		//UsersAdapter extends ArrayAdapter<User>
-		//an ArrayAdapter connects an ArrayList to a ListView
-		UsersAdapter  adapter = new UsersAdapter(this, users);
+
+		// UsersAdapter extends ArrayAdapter<User>
+		// an ArrayAdapter connects an ArrayList to a ListView
+		UsersAdapter adapter = new UsersAdapter(this, users);
 		ListView listView = (ListView) findViewById(R.id.lvUsers);
-		//connect the adapter to the view
+		// connect the adapter to the view
 		listView.setAdapter(adapter);
 
-		//add a click listener
-		listener=new UserClickListener(this);
+		// add a click listener
+		listener = new UserClickListener(this);
 		listView.setOnItemClickListener(listener);
-		
+
 	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -62,4 +64,6 @@ public class SettingsActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
 }
