@@ -13,17 +13,16 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calculate" 
+        android:text="@string/calculate"
         android:textAlignment="center"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/tvUser_Calc"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
+        android:layout_height="wrap_content"
         android:padding="10sp"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,8 +45,8 @@
                 android:id="@+id/edHeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:layout_below="@+id/tvHeight"
+                android:ems="10"
                 android:inputType="numberDecimal" >
 
                 <requestFocus />
@@ -64,7 +63,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="5"
-
                 android:text="@string/weight" />
 
             <EditText
@@ -83,16 +81,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="calculate"
-            android:text="@string/calculate" 
-            />
+            android:text="@string/calculate" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvResult"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="0" />
 
     <RadioGroup
         android:id="@+id/rgSystem"
@@ -115,5 +105,18 @@
             android:onClick="onRadioButtonClicked"
             android:text="@string/imperial" />
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:paddingTop="20dp"
+        android:text="0" />
+
+    <FrameLayout
+        android:id="@+id/ivDial"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 
 </LinearLayout>

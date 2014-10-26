@@ -7,11 +7,14 @@ import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.User;
 import jamie.ardis.utils.UserList;
 import android.support.v7.app.ActionBarActivity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -22,7 +25,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	TextView result;
 	UserList userList;
 	User user;
-	
+	Dial dial;
 	private Measurement measurement = Measurement.Metric;
 	
 	@Override
@@ -45,6 +48,11 @@ public class CalculatorActivity extends ActionBarActivity {
 		weight = (EditText)findViewById(R.id.edWeight);
 		height = (EditText) findViewById(R.id.edHeight);
 		result = (TextView) findViewById(R.id.tvResult);
+		
+		dial = new Dial(this);
+		FrameLayout ivDial = (FrameLayout) findViewById(R.id.ivDial);
+		ivDial.addView(dial);
+        
 	}
 
 	private void updateLabels() {
@@ -104,7 +112,7 @@ public class CalculatorActivity extends ActionBarActivity {
 		double r = bmi.getBmi(measurement);
 		DecimalFormat df = new DecimalFormat("0.0");
 		String b = df.format(r);
-		String s = String.format("BMI: %s Severity: %s", b, bmi.getSeverity(measurement));
+		String s = String.format("BMI: %s \nSeverity: %s", b, bmi.getSeverity(measurement));
 		result.setText(s);
 	}
 	public void onRadioButtonClicked(View view) {
