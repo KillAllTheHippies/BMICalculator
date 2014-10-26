@@ -1,16 +1,26 @@
 package jamie.ardis.bmicalculator;
 
+import jamie.ardis.utils.SettingsAdaptor;
+import jamie.ardis.utils.User;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 public class SettingsActivity extends ActionBarActivity {
 
+	SettingsAdaptor settings;//for persisted values (stored)
+	User user;
+	ListView list;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
+		
+		settings = new SettingsAdaptor(getApplicationContext());
+		user = new User("Donnie Default");
 	}
 
 	@Override

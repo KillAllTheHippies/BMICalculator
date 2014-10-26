@@ -1,5 +1,7 @@
 package jamie.ardis.bmicalculator;
 
+import jamie.ardis.utils.SettingsAdaptor;
+import jamie.ardis.utils.User;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +11,16 @@ import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
+	
+	SettingsAdaptor settings;//for persisted values (stored)
+	User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); // calls onCreate on ActionBarActivity
         setContentView(R.layout.activity_main);
+        
+        settings = new SettingsAdaptor(getApplicationContext());
     }
 
 
