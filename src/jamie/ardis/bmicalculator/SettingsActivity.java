@@ -3,6 +3,7 @@ package jamie.ardis.bmicalculator;
 import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.SettingsAdaptor;
 import jamie.ardis.utils.User;
+import jamie.ardis.utils.UserList;
 
 import java.util.ArrayList;
 
@@ -33,19 +34,16 @@ public class SettingsActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
-		settings = new SettingsAdaptor(this.getApplicationContext());
-		
-		user = new User(settings.getUser());
-		users = new ArrayList<User>();
+		UserList list = new UserList();
+		users = list.getUsers();
 	
+		//UsersAdapter extends ArrayAdapter<User>
 		UsersAdapter  adapter = new UsersAdapter(this, users);
 		ListView listView = (ListView) findViewById(R.id.lvUsers);
 		listView.setAdapter(adapter);
 	
-		adapter.add(user);
-		adapter.add(new User("Donnie Darko"));
-		adapter.add(new User("Donnie Dildo"));
-		
+		adapter.addAll(users);
+
 		listener=new UserClickListener();
 		listView.setOnItemClickListener(listener);
 		
