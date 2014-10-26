@@ -19,7 +19,7 @@ public class SettingsAdaptor {
 	
 	String user;
 	public String getUser() {
-		return prefs.getString("user", "Default");
+		return prefs.getString("user", "Genghis Khan");
 	}
 	public void setUser(String value) {
 		editor.putString("user", value).commit();
