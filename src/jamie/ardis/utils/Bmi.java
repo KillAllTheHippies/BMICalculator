@@ -1,5 +1,9 @@
 package jamie.ardis.utils;
 
+/*
+ * Scale of severity taken from tables at
+ * http://en.wikipedia.org/wiki/Body_mass_index
+ */
 public class Bmi {
 
 	private double weight = 0;
