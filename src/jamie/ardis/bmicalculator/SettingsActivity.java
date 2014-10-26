@@ -38,12 +38,13 @@ public class SettingsActivity extends ActionBarActivity {
 		users = list.getUsers();
 	
 		//UsersAdapter extends ArrayAdapter<User>
+		//an ArrayAdapter connects an ArrayList to a ListView
 		UsersAdapter  adapter = new UsersAdapter(this, users);
 		ListView listView = (ListView) findViewById(R.id.lvUsers);
+		//connect the adapter to the view
 		listView.setAdapter(adapter);
-	
-		adapter.addAll(users);
 
+		//add a click listener
 		listener=new UserClickListener();
 		listView.setOnItemClickListener(listener);
 		
