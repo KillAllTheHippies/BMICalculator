@@ -13,6 +13,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
+
+/*
+ * https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
+ */
+
 public class UsersAdapter extends ArrayAdapter<User> {
     public UsersAdapter(Context context, ArrayList<User> users) {
        super(context, 0, users);
@@ -30,9 +36,12 @@ public class UsersAdapter extends ArrayAdapter<User> {
        }
 
        TextView tvName = (TextView) convertView.findViewById(R.id.userName);
+       TextView tvMeasure = (TextView) convertView.findViewById(R.id.userMeasure);
 
        // Populate the data into the template view using the data object
        tvName.setText(user.getName());
+       tvMeasure.setText(user.getMeasurement().toString());
+       
 
        // Return the completed view to render on screen
        return convertView;

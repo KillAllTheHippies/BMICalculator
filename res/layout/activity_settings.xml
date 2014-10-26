@@ -15,6 +15,7 @@
         android:layout_height="wrap_content" >
     </ListView>
 
+    <!-- TODO: Add functionality to these 2 buttons -->
     <Button
         android:id="@+id/btnEdit"
         android:layout_width="fill_parent"

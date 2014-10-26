@@ -51,20 +51,22 @@ public class MainActivity extends ActionBarActivity {
     }
     public void launchCalculator(View v)
     {
-    	Intent myIntent = new Intent(this, CalculatorActivity.class);
-    	this.startActivity(myIntent);
+    	Intent intent = new Intent(this, CalculatorActivity.class);
+    	intent.putExtra("name", user.getName());
+    	this.startActivity(intent);
     }
     public void launchSettings(View v)
     {
-    	Intent myIntent = new Intent(this, SettingsActivity.class);
+    	Intent intent = new Intent(this, SettingsActivity.class);
     	//calls onActivityResult when SettingsActivity closes
-    	this.startActivityForResult(myIntent, 1);
+    	this.startActivityForResult(intent, 1);
     }
     
+    
+    //callback when SettingsActivity closes
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-    	
-        if (requestCode == 1) {
+        if (requestCode == 1) {//identifier, boilerplate
             if(resultCode == RESULT_OK){
                 String name =data.getStringExtra("name");
                 displayUser(name);
@@ -74,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
                 //TODO, not important
             }
         }
-    }//onActivityResult
+    }
 
 
 	private void displayUser(String name) {

@@ -2,6 +2,8 @@ package jamie.ardis.bmicalculator;
 
 import jamie.ardis.utils.Bmi;
 import jamie.ardis.utils.Measurement;
+import jamie.ardis.utils.User;
+import jamie.ardis.utils.UserList;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +18,9 @@ public class CalculatorActivity extends ActionBarActivity {
 	EditText weight;
 	EditText height;
 	TextView result;
+	UserList userList;
+	User user;
+	
 	private Measurement measurement = Measurement.Metric;
 	
 	@Override
@@ -23,13 +28,42 @@ public class CalculatorActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_calculator);
 		
+		userList = new UserList();
+		//Get the parameters that were passed from main
+		//ie, username
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+		    String name = extras.getString("name");
+		    user = userList.getUser(name);
+		    //TODO new text view to display the user
+		    
+		}
+		
+		updateLabels();
+		
 		weight = (EditText)findViewById(R.id.edWeight);
 		height = (EditText) findViewById(R.id.edHeight);
 		result = (TextView) findViewById(R.id.tvResult);
 	}
 
+	private void updateLabels() {
+		TextView tv;
+		if(measurement== Measurement.Metric){
+			tv =  (TextView)findViewById(R.id.tvWeight);
+			tv.setText(String.format(getString(R.string.weight), "Kgs"));
+			tv =  (TextView)findViewById(R.id.tvHeight);
+			tv.setText(String.format(getString(R.string.height), "cms"));
+		}
+		else{
+			tv =  (TextView)findViewById(R.id.tvWeight);
+			tv.setText(String.format(getString(R.string.weight), "Lbs"));
+			tv =  (TextView)findViewById(R.id.tvHeight);
+			tv.setText(String.format(getString(R.string.height), "Inches"));
+		}
+	}
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu) {  // boilerplate
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.calculator, menu);
 		return true;
@@ -69,5 +103,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	            	measurement = Measurement.Imperial;
 	            break;
 	    }
+	    
+		updateLabels();
 	}
 }
