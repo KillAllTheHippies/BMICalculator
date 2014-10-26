@@ -9,17 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jamie.ardis.bmicalculator.SettingsActivity" >
 
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_user" />
-
     <ListView
         android:id="@+id/lvUsers"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
     </ListView>
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_user" />
 
     <Button
         android:id="@+id/btnAdd"

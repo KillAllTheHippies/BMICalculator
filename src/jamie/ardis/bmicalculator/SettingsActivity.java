@@ -3,32 +3,53 @@ package jamie.ardis.bmicalculator;
 import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.SettingsAdaptor;
 import jamie.ardis.utils.User;
-import android.support.v7.app.ActionBarActivity;
+
+import java.util.ArrayList;
+
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView;
 
 public class SettingsActivity extends ActionBarActivity {
 
-	SettingsAdaptor settings;//for persisted values (stored)
+	SettingsAdaptor settings;// for persisted values (stored)
 	User user;
 	ListView list;
-	TextView weight, height;
-	Measurement measurement;
-	
+	ArrayList<User> users;
+
+	ArrayAdapter<User> adapter;
+	android.widget.AdapterView.OnItemClickListener listener;
+    
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 		
-		settings = new SettingsAdaptor(getApplicationContext());
-		user = new User("Donnie Default");
-
+		settings = new SettingsAdaptor(this.getApplicationContext());
+		
+		user = new User(settings.getUser());
+		users = new ArrayList<User>();
+	
+		UsersAdapter  adapter = new UsersAdapter(this, users);
+		ListView listView = (ListView) findViewById(R.id.lvUsers);
+		listView.setAdapter(adapter);
+	
+		adapter.add(user);
+		adapter.add(new User("Donnie Darko"));
+		adapter.add(new User("Donnie Dildo"));
+		
+		listener=new UserClickListener();
+		listView.setOnItemClickListener(listener);
+		
 	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
