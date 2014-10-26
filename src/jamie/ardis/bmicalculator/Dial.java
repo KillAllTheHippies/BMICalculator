@@ -51,25 +51,27 @@ public class Dial extends View {
         width=canvas.getWidth();
         height=canvas.getHeight();
         
-        setBackgroundColor(Color.BLACK);
-        paint.setColor(Color.GREEN);
+        setBackgroundColor(getResources().getColor(R.color.Grey));
+        paint.setColor( Color.CYAN);
         paint.setStrokeWidth(2);
-
         
-        //x1,y1,x2,y2, paint
-
-        canvas.translate(width/2, height);
+        if(bmi!=null)
+        	x = getDegrees(bmi, measure);
+        else
+        	x = 0;
+        
+        canvas.translate(width/2, height); // set default origin for everything drawn within canvas (to half way along the canvas on bottom)
+     	//x1,y1,x2,y2, paint
         canvas.drawLine(0, 0, x, -height, paint); 
         
 
     }
     public void refresh (Bmi bmi, Measurement measure)
     {
+    	this.bmi=bmi;
     	height=canvas.getHeight();
     	width=canvas.getWidth();
-    	
     	x = getDegrees(bmi, measure);
-    	y = -height; 
     	
     	invalidate();//force repaint
     	

@@ -10,12 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jamie.ardis.bmicalculator.CalculatorActivity" >
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/calculate"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+
 
     <TextView
         android:id="@+id/tvUser_Calc"
@@ -27,7 +22,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:background="@color/Grey">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -81,7 +77,7 @@
             android:id="@+id/Calculate"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:onClick="calculate"
             android:text="@string/calculate" />
     </LinearLayout>
