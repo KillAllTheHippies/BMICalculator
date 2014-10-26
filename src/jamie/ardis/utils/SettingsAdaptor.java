@@ -18,14 +18,19 @@ public class SettingsAdaptor {
 	}
 	
 	String user;
-
 	public String getUser() {
 		return prefs.getString("user", "Default");
 	}
-
-	public void setUser(String user) {
-		editor.putString("user", user);
-		editor.commit();
+	public void setUser(String value) {
+		editor.putString("user", value).commit();
+	}
+	
+	String measurement;
+	public String getMeasurement() {
+		return prefs.getString("measurement", "Default");
+	}
+	public void setMeasurement(String value) {
+		editor.putString("measurement", value).commit();
 	}
 	
 	

@@ -1,18 +1,23 @@
 package jamie.ardis.bmicalculator;
 
+import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.SettingsAdaptor;
 import jamie.ardis.utils.User;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class SettingsActivity extends ActionBarActivity {
 
 	SettingsAdaptor settings;//for persisted values (stored)
 	User user;
 	ListView list;
+	TextView weight, height;
+	Measurement measurement;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,7 @@ public class SettingsActivity extends ActionBarActivity {
 		
 		settings = new SettingsAdaptor(getApplicationContext());
 		user = new User("Donnie Default");
+
 	}
 
 	@Override
