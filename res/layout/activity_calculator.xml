@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvHeight"
                 android:ems="10"
+                android:text="180"
                 android:inputType="numberDecimal" >
 
                 <requestFocus />
@@ -71,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvWeight"
                 android:ems="10"
+                android:text="80"
                 android:inputType="numberDecimal" >
             </EditText>
         </RelativeLayout>

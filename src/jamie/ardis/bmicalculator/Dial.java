@@ -10,25 +10,30 @@ import jamie.ardis.utils.Measurement;
 
 public class Dial extends View {
 	
-	final double MAXDEGREES = 30;
+	final float MAXDEGREES = 100;
 	Measurement measure;
 	Bmi bmi;
 	Context context;
+	float x = 50;
+	float y = 200;
+	float width;
+	float height;
+	Canvas canvas;
 	
 	public Dial(Context context){
 		super(context);
 		this.context = context;
 	}
 	
-	private double getDegrees(Bmi bmi, Measurement measure){
+	private float getDegrees(Bmi bmi, Measurement measure){
 		this.bmi=bmi;
 		this.measure=measure;
 		
-		double b = bmi.getBmi(measure);
+		float b = (float) bmi.getBmi(measure);
 		b -= 25; //set normal weight to 25
-		double max = 25;//upper reach of 50
+		float max = 25;//upper reach of 50
 		
-		return MAXDEGREES * (b/max);	
+		return (width * (b/max));	
 	}
 	
 	private double getRadians(Bmi bmi, Measurement measure){
@@ -41,13 +46,33 @@ public class Dial extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        //if(bmi == null)return;
+    	
+    	this.canvas=canvas;
+        width=canvas.getWidth();
+        height=canvas.getHeight();
         
+        setBackgroundColor(Color.BLACK);
         paint.setColor(Color.GREEN);
-        paint.setStrokeWidth(3);
-        //x1,y1,x2,y2, paint
-        canvas.drawLine(50, 50, 50, 100, paint);
+        paint.setStrokeWidth(2);
 
+        
+        //x1,y1,x2,y2, paint
+
+        canvas.translate(width/2, height);
+        canvas.drawLine(0, 0, x, -height, paint); 
+        
+
+    }
+    public void refresh (Bmi bmi, Measurement measure)
+    {
+    	height=canvas.getHeight();
+    	width=canvas.getWidth();
+    	
+    	x = getDegrees(bmi, measure);
+    	y = -height; 
+    	
+    	invalidate();//force repaint
+    	
     }
 
 }

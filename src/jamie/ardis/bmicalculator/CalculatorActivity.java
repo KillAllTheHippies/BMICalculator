@@ -2,6 +2,8 @@ package jamie.ardis.bmicalculator;
 
 import java.text.DecimalFormat;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import jamie.ardis.utils.Bmi;
 import jamie.ardis.utils.Measurement;
 import jamie.ardis.utils.User;
@@ -23,6 +25,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	EditText weight;
 	EditText height;
 	TextView result;
+	FrameLayout ivDial;
 	UserList userList;
 	User user;
 	Dial dial;
@@ -31,7 +34,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculator);
+		setContentView(R.layout.activity_calculator);	//boilerplate
 		
 		userList = new UserList();
 		//Get the parameters that were passed from main
@@ -50,7 +53,7 @@ public class CalculatorActivity extends ActionBarActivity {
 		result = (TextView) findViewById(R.id.tvResult);
 		
 		dial = new Dial(this);
-		FrameLayout ivDial = (FrameLayout) findViewById(R.id.ivDial);
+		ivDial = (FrameLayout) findViewById(R.id.ivDial);
 		ivDial.addView(dial);
         
 	}
@@ -114,6 +117,8 @@ public class CalculatorActivity extends ActionBarActivity {
 		String b = df.format(r);
 		String s = String.format("BMI: %s \nSeverity: %s", b, bmi.getSeverity(measurement));
 		result.setText(s);
+		dial.refresh(bmi, measurement);
+		
 	}
 	public void onRadioButtonClicked(View view) {
 	    // Is the button now checked?
