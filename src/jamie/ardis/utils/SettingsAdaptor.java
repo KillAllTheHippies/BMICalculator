@@ -21,7 +21,7 @@ public class SettingsAdaptor {
 	String user;
 
 	public String getUserName() {
-		return prefs.getString("user", "Genghis Khan");
+		return prefs.getString("user", "Genghis Khan"); // default to Genghis Khan
 	}
 
 	public void setUser(String value) {

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="app_name">BMI Calculatrice</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_calculator">Calculatrice</string>
+    <string name="settings">Paramètres</string>
+    <string name="calculate">Calculer</string>
+    <string name="title_activity_settings">Paramètres</string>
+    <string name="imperial">Impériale</string>
+    <string name="metric">Métrique</string>
+    <string name="height">Hauteur\n(%s)</string>
+    <string name="weight">Poids\n(%s)</string>
+    <string name="add_user">Ajouter l\'utilisateur</string>
+    <string name="edit">Editer</string>
+    
+
+</resources>
