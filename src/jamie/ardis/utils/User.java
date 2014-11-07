@@ -7,7 +7,9 @@ public class User {
 	
 	public User(String name) {
 		super(); // boilerplate code. Calling super() on Object is unnecessary 
-		this.name = name;
+		setName(name);
+		setMeasurement(measurement); //TODO: 
+		
 	}
 
 	public Measurement getMeasurement() {

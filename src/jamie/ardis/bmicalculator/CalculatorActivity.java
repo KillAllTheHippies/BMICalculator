@@ -78,7 +78,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	private void displayUser(String name) {
 		UserList list = new UserList();
 		user = list.getUser(name);
-		String text = String.format("Name: %s\nMeasurement System: %s",
+		String text = String.format("Name: %s Measurement System: %s",
 				user.getName(), user.getMeasurement());
 		TextView tvUser = (TextView) findViewById(R.id.tvUser_Calc);
 		tvUser.setText(text);
@@ -86,7 +86,7 @@ public class CalculatorActivity extends ActionBarActivity {
 
 	private void displayUser() {
 
-		String text = String.format("Name: %s\nMeasurement System: %s",
+		String text = String.format("Name: %s Measurement System: %s",
 				user.getName(), user.getMeasurement());
 		TextView tvUser = (TextView) findViewById(R.id.tvUser_Calc);
 		tvUser.setText(text);
@@ -99,7 +99,7 @@ public class CalculatorActivity extends ActionBarActivity {
 		return true;
 	}
 
-	@Override
+	@Override // more boilerplate
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
@@ -112,6 +112,12 @@ public class CalculatorActivity extends ActionBarActivity {
 	}
 
 	public void calculate(View v) {
+		
+		if (weight.getText().toString().equals("") || height.getText().toString().equals(""))
+		{showDialog("Warning! \nYou must input weight and height");}
+		else
+		{
+			
 		double w = Double.parseDouble(weight.getText().toString());
 		double h = Double.parseDouble(height.getText().toString());
 		Bmi bmi = new Bmi(w, h);
@@ -122,8 +128,12 @@ public class CalculatorActivity extends ActionBarActivity {
 				bmi.getSeverity(measurement));
 		result.setText(s);
 		dial.refresh(bmi, measurement);
+		
+		// show alert dialog if bmi is severe or super-severe.
 		if (s.contains("Severe") || s.contains("Danger"))
 			showDialog(bmi.getSeverity(measurement));
+		
+		}//end else
 	}
 
 	public void onRadioButtonClicked(View view) {
@@ -141,8 +151,8 @@ public class CalculatorActivity extends ActionBarActivity {
 				measurement = Measurement.Imperial;
 			break;
 		}
-		user.setMeasurement(measurement);// todo, persist the value, see
-											// UserList
+		// set the users preference of Imperial or Metric..
+		user.setMeasurement(measurement);
 		displayUser();
 		updateLabels();
 
@@ -154,7 +164,7 @@ public class CalculatorActivity extends ActionBarActivity {
 		alertDialog.setMessage(message);
 		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				// here you can add functions
+				
 			}
 		});
 		alertDialog.setIcon(R.drawable.ic_launcher);

@@ -36,6 +36,7 @@ public class Dial extends View {
 		return (width * (b/max));	
 	}
 	
+	// this method is un-implemented
 	private double getRadians(Bmi bmi, Measurement measure){
 		return getDegrees(bmi, measure) * Math.PI/180;
 	}
