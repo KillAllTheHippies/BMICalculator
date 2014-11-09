@@ -36,7 +36,7 @@ public class CalculatorActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_calculator); // boilerplate
+		setContentView(R.layout.activity_calculator); // apply layout to activity (boilerplate)
 
 		userList = new UserList();
 		// Get the parameters that were passed from main

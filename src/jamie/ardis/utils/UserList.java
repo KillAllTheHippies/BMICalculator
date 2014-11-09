@@ -21,7 +21,7 @@ public class UserList {
 
 	private void createLookupTable() {
 		
-		for(User u : users)
+		for(User u : users) // iterate through a collection or anything that can be iterated through
 			//get the name (a string), and make this name the key 
 			//by which the user can be looked up
 			lookup.put(u.getName(), u);
